@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadcrumb_btns')
-	<a class="btn btn-sm btn-success" href="{{ route('version.create') }}">
+	<a class="btn btn-sm btn-success" href="{{ route('help_center') }}">
 		<i class="bi bi-plus"></i>
 		Agregar
 	</a>
