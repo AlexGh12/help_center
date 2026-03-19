@@ -1,0 +1,43 @@
+{
+	"name": "alexgh12/help_center",
+	"description": "Centro de ayuda, genera una pagina web para mostrar los articulos de ayuda y/o documentación, leyendo los archivos .md de la carpeta resources/docs",
+	"keywords": [
+		"help center",
+		"documentation",
+		"articles"
+	],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Alex Gh",
+			"email": "a-l-e-x_1379@hotmail.com"
+		}
+	],
+	"require": {
+		"php": "^7.4|^8.0",
+		"laravel/framework": "^7.0|^8.37|^9.0|^10.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"AlexGh12\\HelpCenter\\": "src/"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"AlexGh12\\HelpCenter\\HelpCenterServiceProvider"
+			],
+			"aliases": {
+				"HelpCenter": "AlexGh12\\HelpCenter"
+			}
+		},
+		"branch-alias": {
+			"0.x": "0.x-dev"
+		}
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true
+}
