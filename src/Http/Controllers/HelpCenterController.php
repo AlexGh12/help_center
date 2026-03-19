@@ -4,7 +4,6 @@ namespace AlexGh12\HelpCenter\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use AlexGh12\HelpCenter\Models\ChangeLog;
 use Illuminate\Support\Facades\Validator;
 
 class HelpCenterController extends Controller

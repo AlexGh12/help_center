@@ -1,4 +1,4 @@
-@extends('ChangeLog::layout')
+@extends('HelpCenter::layout')
 
 @section('title', 'Index')
 
