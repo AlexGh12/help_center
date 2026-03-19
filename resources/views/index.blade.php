@@ -204,209 +204,200 @@ pre.language-bash > code,
 pre.language-shell > code {
 	color: #f8f8f2;
 }
-	.sidebar {
-		height: calc(100vh - 200px);
-		overflow-y: auto;
-		border-right: 1px solid #dee2e6;
-		padding-right: 1rem;
-	}
 
-	.sidebar .nav-link {
-		color: #333;
-		padding: 0.25rem 0.5rem;
-		font-size: 0.9rem;
-	}
+.sidebar {
+	height: calc(100vh - 200px);
+	overflow-y: auto;
+	padding-right: 1rem;
+	border-right: 1px solid var(--border-color);
+}
 
-	.sidebar .nav-link:hover {
-		background-color: #f8f9fa;
-	}
+.sidebar h6 {
+	color: var(--text-primary);
+}
 
-	.sidebar .nav-link.active {
-		background-color: #e7f1ff;
-		color: #0d6efd;
-		font-weight: 500;
-	}
+.sidebar .folder-item {
+	margin-top: 0.5rem;
+}
 
-	.sidebar .folder-item {
-		margin-top: 0.5rem;
-	}
+.sidebar .folder-toggle {
+	cursor: pointer;
+	user-select: none;
+}
 
-	.sidebar .folder-toggle {
-		cursor: pointer;
-		user-select: none;
-	}
+.sidebar .folder-toggle i {
+	transition: transform 0.2s;
+}
 
-	.sidebar .folder-toggle i {
-		transition: transform 0.2s;
-	}
+.sidebar .folder-toggle.collapsed i {
+	transform: rotate(-90deg);
+}
 
-	.sidebar .folder-toggle.collapsed i {
-		transform: rotate(-90deg);
-	}
+.sidebar .folder-children {
+	padding-left: 1rem;
+}
 
-	.sidebar .folder-children {
-		padding-left: 1rem;
-	}
+.content-area {
+	padding-left: 1.5rem;
+}
 
-	.content-area {
-		padding-left: 1.5rem;
-	}
+.markdown-body {
+	font-family: inherit;
+}
 
-	.markdown-body {
-		font-family: inherit;
-	}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+	color: var(--text-primary);
+}
 
-	.markdown-body h1 {
-		font-size: 2rem;
-		margin-bottom: 1rem;
-	}
+.markdown-body h1 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
 
-	.markdown-body h2 {
-		font-size: 1.5rem;
-		margin-top: 1.5rem;
-		margin-bottom: 0.75rem;
-	}
+.markdown-body h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+	margin-bottom: 0.75rem;
+}
 
-	.markdown-body h3 {
-		font-size: 1.25rem;
-		margin-top: 1.25rem;
-		margin-bottom: 0.5rem;
-	}
+.markdown-body h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+	margin-bottom: 0.5rem;
+}
 
-	.markdown-body p {
-		margin-bottom: 1rem;
-		line-height: 1.6;
-	}
+.markdown-body p {
+	margin-bottom: 1rem;
+	line-height: 1.6;
+	color: var(--text-primary);
+}
 
-	.markdown-body ul, .markdown-body ol {
-		margin-bottom: 1rem;
-		padding-left: 1.5rem;
-	}
+.markdown-body ul, .markdown-body ol {
+	margin-bottom: 1rem;
+	padding-left: 1.5rem;
+}
 
-	.markdown-body code:not([class*="language-"]) {
-		background-color: #f4f4f4;
-		padding: 0.125rem 0.375rem;
-		border-radius: 0.25rem;
-		font-size: 0.875em;
-	}
+.markdown-body li {
+	color: var(--text-primary);
+}
 
-	.markdown-body pre {
-		padding: 0;
-		border-radius: 0.5rem;
-		overflow-x: auto;
-		margin-bottom: 1rem;
-		background: #272822 !important;
-	}
+.markdown-body pre {
+	padding: 0;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	margin-bottom: 1rem;
+}
 
-	.markdown-body pre[class*="language-"] {
-		background: #272822 !important;
-		padding: 1rem;
-	}
+.markdown-body pre code[class*="language-"] {
+	padding: 0;
+	font-size: 0.875rem;
+}
 
-	.markdown-body pre code[class*="language-"] {
-		background: none !important;
-		padding: 0;
-		font-size: 0.875rem;
-		color: #f8f8f2;
-	}
+.markdown-body code:not([class*="language-"]) {
+	background-color: var(--code-bg);
+	color: var(--text-primary);
+}
 
-	.markdown-body blockquote {
-		border-left: 4px solid #dee2e6;
-		padding-left: 1rem;
-		color: #6c757d;
-		margin-bottom: 1rem;
-	}
+.markdown-body blockquote {
+	border-left: 4px solid var(--blockquote-border);
+	color: var(--blockquote-text);
+}
 
-	.markdown-body table.table {
-		width: 100%;
-		margin-bottom: 1rem;
-		border-collapse: collapse;
-		overflow: hidden;
-		border: 1px solid #dee2e6;
-		border-radius: 0.5rem;
-	}
+.markdown-body table {
+	width: 100%;
+	margin-bottom: 1rem;
+	border-collapse: collapse;
+	overflow: hidden;
+	border: 1px solid var(--border-color);
+	border-radius: 0.5rem;
+}
 
-	.markdown-body table.table th,
-	.markdown-body table.table td {
-		border: 1px solid #dee2e6;
-		padding: 0.75rem;
-		text-align: left;
-		vertical-align: top;
-	}
+.markdown-body table th,
+.markdown-body table td {
+	border: 1px solid var(--border-color);
+	padding: 0.75rem;
+	text-align: left;
+	vertical-align: top;
+	color: var(--text-primary);
+}
 
-	.markdown-body table.table thead th {
-		background-color: #343a40;
-		color: #fff;
-		font-weight: 600;
-		border-bottom: 2px solid #dee2e6;
-	}
+.markdown-body table thead th {
+	background-color: var(--table-header-bg);
+	color: var(--table-header-text);
+	font-weight: 600;
+	border-bottom: 2px solid var(--border-color);
+}
 
-	.markdown-body table.table tbody tr {
-		border-bottom: 1px solid #dee2e6;
-	}
+.markdown-body table tbody tr {
+	border-bottom: 1px solid var(--border-color);
+	background-color: var(--bg-primary);
+}
 
-	.markdown-body table.table tbody tr:last-child {
-		border-bottom: none;
-	}
+.markdown-body table tbody tr:last-child {
+	border-bottom: none;
+}
 
-	.markdown-body table.table tbody tr:nth-child(even) {
-		background-color: #f8f9fa;
-	}
+.markdown-body table tbody tr:nth-child(even) {
+	background-color: var(--table-row-even);
+}
 
-	.markdown-body table.table tbody tr:hover {
-		background-color: #e9ecef;
-	}
+.markdown-body table tbody tr:hover {
+	background-color: var(--table-row-hover);
+}
 
-	.markdown-body table.table-bordered {
-		border: 2px solid #dee2e6;
-	}
+.markdown-body div.mermaid {
+	text-align: center;
+	margin: 1.5rem 0;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow-x: auto;
+	background-color: var(--bg-secondary);
+	border: 1px solid var(--mermaid-border);
+}
 
-	.markdown-body table.table-striped tbody tr:nth-child(odd) {
-		background-color: #f8f9fa;
-	}
+.markdown-body div.mermaid svg {
+	max-width: 100%;
+	height: auto;
+}
 
-	.markdown-body div.mermaid {
-		background-color: transparent;
-		text-align: center;
-		margin: 1.5rem 0;
-		padding: 1rem;
-		border: 1px solid #dee2e6;
-		border-radius: 0.5rem;
-		overflow-x: auto;
-	}
+.markdown-body .mermaid-error {
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	font-size: 0.875rem;
+	color: #dc3545;
+	background-color: #f8d7da;
+	border: 1px solid #f5c6cb;
+}
 
-	.markdown-body div.mermaid svg {
-		max-width: 100%;
-		height: auto;
-	}
+.markdown-body a {
+	color: var(--link-color);
+	text-decoration: none;
+}
 
-	.markdown-body .mermaid-error {
-		color: #dc3545;
-		background-color: #f8d7da;
-		border: 1px solid #f5c6cb;
-		padding: 0.5rem;
-		border-radius: 0.25rem;
-		font-size: 0.875rem;
-	}
+.markdown-body a:hover {
+	text-decoration: underline;
+}
 
-	.markdown-body a {
-		color: #0d6efd;
-		text-decoration: none;
-	}
+.markdown-body img {
+	max-width: 100%;
+	height: auto;
+}
 
-	.markdown-body a:hover {
-		text-decoration: underline;
-	}
+.markdown-body hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 1.5rem 0;
+}
 
-	.markdown-body img {
-		max-width: 100%;
-		height: auto;
-	}
-
-	.no-content {
-		color: #6c757d;
-		font-style: italic;
-	}
+.no-content {
+	color: var(--text-secondary);
+	font-style: italic;
+}
 </style>
 @endsection
 
@@ -447,9 +438,14 @@ pre.language-shell > code {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
+	function getMermaidTheme() {
+		const theme = document.documentElement.getAttribute('data-theme');
+		return theme === 'dark' ? 'dark' : 'default';
+	}
+
 	mermaid.initialize({
 		startOnLoad: false,
-		theme: 'default',
+		theme: getMermaidTheme(),
 		securityLevel: 'loose',
 		flowchart: {
 			htmlLabels: true,
@@ -460,6 +456,17 @@ pre.language-shell > code {
 			messageMargin: 40
 		}
 	});
+
+	function renderMermaid() {
+		if (typeof mermaid !== 'undefined') {
+			mermaid.initialize({
+				theme: getMermaidTheme()
+			});
+			mermaid.run({
+				querySelector: '.mermaid'
+			});
+		}
+	}
 
 	document.addEventListener('DOMContentLoaded', function() {
 		document.querySelectorAll('.markdown-body table').forEach(function(table) {
@@ -485,15 +492,21 @@ pre.language-shell > code {
 			pre.parentNode.replaceChild(div, pre);
 		});
 
-		if (typeof mermaid !== 'undefined') {
-			mermaid.run({
-				querySelector: '.mermaid'
-			});
-		}
+		renderMermaid();
 
 		if (typeof Prism !== 'undefined') {
 			Prism.highlightAll();
 		}
 	});
+
+	const observer = new MutationObserver(function(mutations) {
+		mutations.forEach(function(mutation) {
+			if (mutation.attributeName === 'data-theme') {
+				renderMermaid();
+			}
+		});
+	});
+
+	observer.observe(document.documentElement, { attributes: true });
 </script>
 @endsection
