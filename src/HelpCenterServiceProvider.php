@@ -14,7 +14,6 @@ class HelpCenterServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->registerCommands();
 		$this->registerPublishing();
 
 		if (! config('HelpCenter.enabled')) {
