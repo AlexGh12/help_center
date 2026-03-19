@@ -46,10 +46,16 @@ class HelpCenterServiceProvider extends ServiceProvider
 	 */
 	private function routeConfiguration()
 	{
-		return [
+		$config = [
 			'namespace' => 'AlexGh12\HelpCenter\Http\Controllers',
 			'prefix' => config('HelpCenter.path_views'),
 		];
+
+		if (config('HelpCenter.auth')) {
+			$config['middleware'] = 'auth';
+		}
+
+		return $config;
 	}
 
 	/**
@@ -60,7 +66,13 @@ class HelpCenterServiceProvider extends ServiceProvider
 	private function registerPublishing()
 	{
 		if ($this->app->runningInConsole()) {
-			//
+			$this->publishes([
+				__DIR__ . '/../config/HelpCenter.php' => config_path('HelpCenter.php'),
+			], 'help-center-config');
+
+			$this->publishes([
+				__DIR__ . '/../resources/docs' => base_path('resources/docs'),
+			], 'help-center-docs');
 		}
 	}
 
