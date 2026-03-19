@@ -40,7 +40,7 @@ class HelpCenterController extends Controller
 
 		$content = null;
 		if ($selectedFile) {
-			$filePath = base_path($selectedFile);
+			$filePath = base_path('resources/docs/' . $selectedFile);
 			if (file_exists($filePath) && str_ends_with($filePath, '.md')) {
 				$markdown = File::get($filePath);
 				$content = $this->converter->convert($markdown);

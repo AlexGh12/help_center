@@ -10,8 +10,8 @@
 		</div>
 	</div>
 @else
-	<a class="nav-link {{ isset($selectedFile) && $selectedFile == config('HelpCenter.path_docs') . '/' . $item['path'] ? 'active' : '' }}"
-		href="{{ route('help_center') }}?file={{ config('HelpCenter.path_docs') }}/{{ $item['path'] }}">
+	<a class="nav-link {{ isset($selectedFile) && $selectedFile == $item['path'] ? 'active' : '' }}"
+		href="{{ route('help_center') }}?file={{ $item['path'] }}">
 		<i class="bi bi-file-text me-1"></i>
 		{{ $item['name'] }}
 	</a>
