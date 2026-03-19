@@ -7,7 +7,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
-	background: none;
+	background: #272822;
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	font-size: 0.875rem;
@@ -23,15 +23,17 @@ pre[class*="language-"] {
 
 pre[class*="language-"] {
 	padding: 1em;
-	margin: 0;
+	margin: 0 0 1em 0;
 	overflow: auto;
 	border-radius: 0.5rem;
+	background: #272822;
 }
 
 :not(pre) > code[class*="language-"] {
 	padding: .1em .3em;
 	border-radius: .3em;
 	white-space: normal;
+	background: #272822;
 }
 
 .token.comment,
@@ -51,13 +53,13 @@ pre[class*="language-"] {
 
 .token.property,
 .token.tag,
+.token.boolean,
 .token.constant,
 .token.symbol,
 .token.deleted {
 	color: #f92672;
 }
 
-.token.boolean,
 .token.number {
 	color: #ae81ff;
 }
@@ -75,24 +77,24 @@ pre[class*="language-"] {
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
+.style .token.string {
 	color: #f8f8f2;
 }
 
 .token.atrule,
 .token.attr-value,
+.token.keyword {
+	color: #66d9ef;
+}
+
 .token.function,
 .token.class-name {
 	color: #e6db74;
 }
 
-.token.keyword {
-	color: #66d9ef;
-}
-
 .token.regex,
-.token.important {
+.token.important,
+.token.variable {
 	color: #fd971f;
 }
 
@@ -111,6 +113,91 @@ pre[class*="language-"] {
 
 .token {
 	display: inline;
+}
+
+.token.namespace {
+	opacity: 0.7;
+}
+
+.language-json .token.property {
+	color: #f92672;
+}
+
+.language-json .token.string {
+	color: #a6e22e;
+}
+
+.language-json .token.number {
+	color: #ae81ff;
+}
+
+.language-json .token.boolean,
+.language-json .token.null {
+	color: #66d9ef;
+}
+
+.language-json .token.punctuation {
+	color: #f8f8f2;
+}
+
+.language-php .token.keyword {
+	color: #66d9ef;
+}
+
+.language-php .token.string {
+	color: #a6e22e;
+}
+
+.language-php .token.number {
+	color: #ae81ff;
+}
+
+.language-php .token.function {
+	color: #e6db74;
+}
+
+.language-sql .token.keyword {
+	color: #66d9ef;
+}
+
+.language-sql .token.string {
+	color: #a6e22e;
+}
+
+.language-sql .token.function {
+	color: #e6db74;
+}
+
+.language-bash .token.function {
+	color: #a6e22e;
+}
+
+.language-bash .token.string {
+	color: #e6db74;
+}
+
+.language-css .token.property {
+	color: #f92672;
+}
+
+.language-css .token.selector {
+	color: #a6e22e;
+}
+
+.language-css .token.keyword {
+	color: #66d9ef;
+}
+
+.language-markup .token.tag {
+	color: #f92672;
+}
+
+.language-markup .token.attr-name {
+	color: #a6e22e;
+}
+
+.language-markup .token.attr-value {
+	color: #e6db74;
 }
 
 pre.language-bash > code,
@@ -196,7 +283,7 @@ pre.language-shell > code {
 		padding-left: 1.5rem;
 	}
 
-	.markdown-body code {
+	.markdown-body code:not([class*="language-"]) {
 		background-color: #f4f4f4;
 		padding: 0.125rem 0.375rem;
 		border-radius: 0.25rem;
@@ -204,20 +291,23 @@ pre.language-shell > code {
 	}
 
 	.markdown-body pre {
-		padding: 1rem;
+		padding: 0;
 		border-radius: 0.5rem;
 		overflow-x: auto;
 		margin-bottom: 1rem;
+		background: #272822 !important;
 	}
 
 	.markdown-body pre[class*="language-"] {
-		background: #272822;
+		background: #272822 !important;
+		padding: 1rem;
 	}
 
-	.markdown-body pre code {
-		background: none;
+	.markdown-body pre code[class*="language-"] {
+		background: none !important;
 		padding: 0;
 		font-size: 0.875rem;
+		color: #f8f8f2;
 	}
 
 	.markdown-body blockquote {
@@ -227,32 +317,76 @@ pre.language-shell > code {
 		margin-bottom: 1rem;
 	}
 
-	.markdown-body table {
+	.markdown-body table.table {
 		width: 100%;
 		margin-bottom: 1rem;
 		border-collapse: collapse;
-		border-radius: 0.5rem;
 		overflow: hidden;
+		border: 1px solid #dee2e6;
+		border-radius: 0.5rem;
 	}
 
-	.markdown-body th, .markdown-body td {
+	.markdown-body table.table th,
+	.markdown-body table.table td {
 		border: 1px solid #dee2e6;
 		padding: 0.75rem;
 		text-align: left;
+		vertical-align: top;
 	}
 
-	.markdown-body thead th {
+	.markdown-body table.table thead th {
 		background-color: #343a40;
 		color: #fff;
 		font-weight: 600;
+		border-bottom: 2px solid #dee2e6;
 	}
 
-	.markdown-body tbody tr:nth-child(even) {
+	.markdown-body table.table tbody tr {
+		border-bottom: 1px solid #dee2e6;
+	}
+
+	.markdown-body table.table tbody tr:last-child {
+		border-bottom: none;
+	}
+
+	.markdown-body table.table tbody tr:nth-child(even) {
 		background-color: #f8f9fa;
 	}
 
-	.markdown-body tbody tr:hover {
+	.markdown-body table.table tbody tr:hover {
 		background-color: #e9ecef;
+	}
+
+	.markdown-body table.table-bordered {
+		border: 2px solid #dee2e6;
+	}
+
+	.markdown-body table.table-striped tbody tr:nth-child(odd) {
+		background-color: #f8f9fa;
+	}
+
+	.markdown-body div.mermaid {
+		background-color: transparent;
+		text-align: center;
+		margin: 1.5rem 0;
+		padding: 1rem;
+		border: 1px solid #dee2e6;
+		border-radius: 0.5rem;
+		overflow-x: auto;
+	}
+
+	.markdown-body div.mermaid svg {
+		max-width: 100%;
+		height: auto;
+	}
+
+	.markdown-body .mermaid-error {
+		color: #dc3545;
+		background-color: #f8d7da;
+		border: 1px solid #f5c6cb;
+		padding: 0.5rem;
+		border-radius: 0.25rem;
+		font-size: 0.875rem;
 	}
 
 	.markdown-body a {
@@ -302,16 +436,35 @@ pre.language-shell > code {
 
 @section('javascript')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup-templating.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
+	mermaid.initialize({
+		startOnLoad: false,
+		theme: 'default',
+		securityLevel: 'loose',
+		flowchart: {
+			htmlLabels: true,
+			curve: 'basis'
+		},
+		sequence: {
+			actorMargin: 50,
+			messageMargin: 40
+		}
+	});
+
 	document.addEventListener('DOMContentLoaded', function() {
-		Prism.highlightAll();
+		document.querySelectorAll('.markdown-body table').forEach(function(table) {
+			table.classList.add('table', 'table-bordered', 'table-striped');
+		});
 
 		document.querySelectorAll('.folder-toggle').forEach(function(toggle) {
 			toggle.addEventListener('click', function() {
@@ -322,6 +475,25 @@ pre.language-shell > code {
 				}
 			});
 		});
+
+		document.querySelectorAll('pre code.language-mermaid').forEach(function(el) {
+			const pre = el.parentNode;
+			const code = el.textContent || el.innerText;
+			const div = document.createElement('div');
+			div.className = 'mermaid';
+			div.textContent = code;
+			pre.parentNode.replaceChild(div, pre);
+		});
+
+		if (typeof mermaid !== 'undefined') {
+			mermaid.run({
+				querySelector: '.mermaid'
+			});
+		}
+
+		if (typeof Prism !== 'undefined') {
+			Prism.highlightAll();
+		}
 	});
 </script>
 @endsection

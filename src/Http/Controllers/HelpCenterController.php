@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\Environment\Environment;
+use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
+use League\CommonMark\Extension\Table\TableExtension;
+use League\CommonMark\MarkdownConverter;
 
 class HelpCenterController extends Controller
 {
@@ -14,9 +17,15 @@ class HelpCenterController extends Controller
 
 	public function __construct()
 	{
-		$this->converter = new CommonMarkConverter([
+		$environment = new Environment([
 			'allow_unsafe_links' => false,
+			'html_input' => 'escape',
 		]);
+
+		$environment->addExtension(new CommonMarkCoreExtension());
+		$environment->addExtension(new TableExtension());
+
+		$this->converter = new MarkdownConverter($environment);
 	}
 
 	/**
