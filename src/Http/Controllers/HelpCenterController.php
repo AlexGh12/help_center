@@ -71,6 +71,10 @@ class HelpCenterController extends Controller
 		$directories = [];
 		$files = [];
 
+		if (! File::isDirectory($path)) {
+			return [];
+		}
+
 		$itemsList = File::directories($path);
 		foreach ($itemsList as $dir) {
 			$dirName = basename($dir);
