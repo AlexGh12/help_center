@@ -4,7 +4,7 @@ This is a Laravel package that generates a help center webpage by reading `.md` 
 
 ## Project Overview
 
-- **Language**: PHP (^7.4|^8.0)
+- **Language**: PHP (^7.4|^8.0|^8.1|^8.2|^8.3|^8.4)
 - **Framework**: Laravel (^7.0|^8.37|^9.0|^10.0|^11.0|^12.0|^13.0)
 - **Namespace**: `AlexGh12\HelpCenter`
 - **Package Name**: `alexgh12/help_center`
@@ -14,18 +14,29 @@ This is a Laravel package that generates a help center webpage by reading `.md` 
 
 ```
 src/
-├── AlexGh12.php                    # Facade class
-├── HelpCenterServiceProvider.php   # Service provider
+├── HelpCenter.php                   # Facade class
+├── HelpCenterServiceProvider.php    # Service provider
 ├── Http/
 │   ├── Controllers/
 │   │   └── HelpCenterController.php
 │   └── routes.php
 config/
-└── HelpCenter.php                 # Package config (publishable)
+└── HelpCenter.php                   # Package config (publishable)
 resources/
 └── views/
     ├── index.blade.php
-    └── layout.blade.php
+    ├── layout.blade.php
+    └── partials/
+        ├── css/
+        │   ├── prism.blade.php
+        │   └── theme.blade.php
+        ├── js/
+        │   ├── alerts.blade.php
+        │   ├── init.blade.php
+        │   ├── mermaid.blade.php
+        │   ├── prism.blade.php
+        │   └── theme.blade.php
+        └── tree-item.blade.php
 ```
 
 ## Build/Lint/Test Commands
@@ -233,8 +244,27 @@ Package config is stored in `config/HelpCenter.php` and supports environment var
 | Key | Env Variable | Default |
 |-----|--------------|---------|
 | enabled | `HELP_CENTER_ENABLED` | `true` |
-| path_views | `HELP_CENTER_PATH_VIEWS` | `HelpCenter` |
+| path_views | `HELP_CENTER_PATH_VIEWS` | `help-center` |
 | path_docs | `HELP_CENTER_PATH_DOCS` | `resources/docs/` |
+| default_file | `HELP_CENTER_DEFAULT_FILE` | `introduction.md` |
+| auth | `HELP_CENTER_AUTH` | `false` |
+
+## Vendor Publish
+
+The package provides the following publishable assets:
+
+```bash
+# Publish config file
+php artisan vendor:publish --tag=help-center-config
+
+# Publish example docs
+php artisan vendor:publish --tag=help-center-docs
+```
+
+| Tag | Description |
+|-----|-------------|
+| `help-center-config` | Publishes `config/HelpCenter.php` to `config_path('HelpCenter.php')` |
+| `help-center-docs` | Publishes sample `.md` files to `resource_path('docs/')` |
 
 ## Testing Guidelines
 
@@ -287,6 +317,15 @@ class HelpCenterTest extends TestCase
 # Create git tag
 git tag v0.x.x
 git push origin v0.x.x
+```
+
+### Publishing Assets
+```bash
+# Publish specific tag
+php artisan vendor:publish --tag=help-center-config
+
+# Publish all package assets
+php artisan vendor:publish alexgh12/help_center
 ```
 
 ### Adding New Routes
