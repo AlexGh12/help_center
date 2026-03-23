@@ -4,8 +4,8 @@ This is a Laravel package that generates a help center webpage by reading `.md` 
 
 ## Project Overview
 
-- **Language**: PHP (^7.4|^8.0|^8.1|^8.2|^8.3|^8.4)
-- **Framework**: Laravel (^7.0|^8.37|^9.0|^10.0|^11.0|^12.0|^13.0)
+- **Language**: PHP (^7.4)
+- **Framework**: Laravel (^6.0|^7.0|^8.0)
 - **Namespace**: `AlexGh12\HelpCenter`
 - **Package Name**: `alexgh12/help_center`
 - **License**: MIT
@@ -300,6 +300,12 @@ namespace AlexGh12\HelpCenter\Tests;
 
 class HelpCenterTest extends TestCase
 {
+    public function test_php_version_is_74()
+    {
+        $this->assertEquals(7, PHP_MAJOR_VERSION);
+        $this->assertEquals(4, PHP_MINOR_VERSION);
+    }
+
     public function test_route_exists()
     {
         $response = $this->get('/help-center');

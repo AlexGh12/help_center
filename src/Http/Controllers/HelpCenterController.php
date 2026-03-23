@@ -88,7 +88,7 @@ class HelpCenterController extends Controller
 
 		$fileList = File::files($path);
 		foreach ($fileList as $file) {
-			if (str_ends_with($file->getFilename(), '.md')) {
+			if (substr($file->getFilename(), -3) === '.md') {
 				$fileName = $file->getFilename();
 				$filePath = ltrim($basePath . '/' . $fileName, '/');
 				$files[$fileName] = [

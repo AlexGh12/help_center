@@ -4,6 +4,12 @@ namespace AlexGh12\HelpCenter\Tests;
 
 class HelpCenterTest extends TestCase
 {
+	public function test_php_version_is_74()
+	{
+		$this->assertEquals(7, PHP_MAJOR_VERSION);
+		$this->assertEquals(4, PHP_MINOR_VERSION);
+	}
+
 	public function test_route_exists()
 	{
 		$response = $this->get('/help-center');
