@@ -33,7 +33,7 @@ class HelpCenterController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$docsPath = base_path(config('HelpCenter.path_docs'));
+		$docsPath = $this->getDocsPath();
 		$selectedFile = $request->get('file');
 		$defaultFile = config('HelpCenter.default_file');
 
@@ -41,13 +41,13 @@ class HelpCenterController extends Controller
 
 		$content = null;
 		if ($selectedFile) {
-			$filePath = base_path('resources/docs/' . $selectedFile);
+			$filePath = $docsPath . '/' . $selectedFile;
 			if (file_exists($filePath) && substr($filePath, -3) === '.md') {
 				$markdown = File::get($filePath);
 				$content = $this->converter->convert($markdown);
 			}
 		} elseif ($defaultFile) {
-			$filePath = base_path('resources/docs/' . $defaultFile);
+			$filePath = $docsPath . '/' . $defaultFile;
 			if (file_exists($filePath) && substr($filePath, -3) === '.md') {
 				$markdown = File::get($filePath);
 				$content = $this->converter->convert($markdown);
@@ -60,6 +60,56 @@ class HelpCenterController extends Controller
 			'content' => $content,
 			'selectedFile' => $selectedFile,
 		]);
+	}
+
+	/**
+	 * Determine the docs path based on user role.
+	 */
+	protected function getDocsPath(): string
+	{
+		$basePath = base_path(config('HelpCenter.path_docs'));
+		$roleColumn = config('HelpCenter.role_column');
+		$rolePaths = config('HelpCenter.role_paths');
+
+		if (! $roleColumn || ! $rolePaths) {
+			return $basePath;
+		}
+
+		if (! auth()->check()) {
+			return $basePath . '/public';
+		}
+
+		$user = auth()->user();
+		$roleValue = $this->getUserRoleValue($user, $roleColumn);
+
+		if (! $roleValue) {
+			return $basePath . '/public';
+		}
+
+		$roleDocsPath = $basePath . '/' . $rolePaths[$roleValue];
+
+		if (File::isDirectory($roleDocsPath)) {
+			return $roleDocsPath;
+		}
+
+		$publicPath = $basePath . '/public';
+		if (File::isDirectory($publicPath)) {
+			return $publicPath;
+		}
+
+		return $basePath;
+	}
+
+	/**
+	 * Get user role value from model.
+	 */
+	protected function getUserRoleValue($user, string $roleColumn)
+	{
+		if (isset($user->{$roleColumn})) {
+			return $user->{$roleColumn};
+		}
+
+		return null;
 	}
 
 	/**

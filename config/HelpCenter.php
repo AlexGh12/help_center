@@ -64,4 +64,33 @@ return [
 
 	'auth' => env('HELP_CENTER_AUTH', false),
 
+	/*
+    |--------------------------------------------------------------------------
+    | Help Center Columna de Rol
+    |--------------------------------------------------------------------------
+    |
+    | Esta opción especifica el nombre de la columna en la tabla users
+    | que se utilizará para determinar el rol del usuario autenticado.
+    | Ejemplo: 'type', 'role', 'role_id', etc.
+    |
+    */
+
+	'role_column' => env('HELP_CENTER_ROLE_COLUMN', null),
+
+	/*
+    |--------------------------------------------------------------------------
+    | Help Center Rutas por Rol
+    |--------------------------------------------------------------------------
+    |
+    | Esta opción define un array asociativo donde la clave es el valor
+    | del rol del usuario (según role_column) y el valor es el directorio
+    | relativo desde resources/docs/ donde se encuentran los documentos
+    | para ese rol.
+    |
+    | Ejemplo: ['admin' => 'auth/admin', 'client' => 'auth/client']
+    |
+    */
+
+	'role_paths' => env('HELP_CENTER_ROLE_PATHS', null),
+
 ];
