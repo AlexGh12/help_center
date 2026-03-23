@@ -5,3 +5,5 @@ composer.lock
 /phpunit.xml
 .phpunit.result.cache
 .phpunit.cache/*
+bootstrap/cache/*
+storage/logs/*
